@@ -106,10 +106,11 @@ class Blog extends CI_Controller {
 			$config['max_height']    = 768;   
 			$this->load->library('upload', $config); 
 			$this->upload->initialize($config); 
-
+			
 			if ( ! $this->upload->do_upload('image_file')) { 
-				$error = array('error' => $this->upload->display_errors());  
-				$this->load->view('blog_update_view', $error);  
+				$data['error'] = $this->upload->display_errors();  
+				$this->load->view('blog_update_view', $data);  
+			  
 			} 
 
 			else {  

@@ -26,7 +26,7 @@
             <a class="nav-link" href="#">News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Blog</a>
+            <a class="nav-link" href="<?php echo base_url("index.php/cat_create") ?>">Blog</a>
           </li>
         </ul>
       </div>

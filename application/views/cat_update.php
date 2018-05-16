@@ -13,20 +13,14 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+         <li class="nav-item active">
             <a class="nav-link" href="<?php echo base_url() ?>">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Blog</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url("index.php/category/create") ?>">Tambah Kategori</a>
+            <a class="nav-link" href="<?php echo base_url("index.php/Category") ?>">Kategori</a>
           </li>
         </ul>
       </div>

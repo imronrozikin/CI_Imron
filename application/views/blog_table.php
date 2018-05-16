@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -29,25 +28,45 @@
       </div>
     </nav>
 
-<main role="main" class="container">
-<?php echo validation_errors() ?>
-     <?php echo form_open( 'category/update/'.$cat_update['cat_id'], array('class' => 'needs-validation', 'novalidate' => '') ); ?>
-  <div class="form-group">
-    <label for="cat_name">Nama Kategori</label>
-    <input type="text" class="form-control" name="cat_name" value="<?php echo $cat_update['cat_name'] ?>" required>
-    <div class="invalid-feedback">Isi judul dulu gan</div>
-  </div>
 
-  <div class="form-group">
-    <label for="text">Deskripsi</label>
-    <input type="text" class="form-control" name="cat_description" value="<?php echo $cat_update['cat_description'] ?>" required>
-    <div class="invalid-feedback">Isi deskripsinya dulu gan</div>
-  </div>
-  <button id="submitBtn" type="submit" class="btn btn-success">Ubah</button>
-   </main>
+  <main role="main" class="container">
+    <a href="<?php echo base_url("index.php/Blog/add_view") ?>" class="btn btn-primary mb-3">Tambah Blog</a>
+    <table id="dt-basic" class="table table-striped table-bordered">
+     <thead>
+       <tr>
+         <th>ID</th>
+         <th>Tanggal</th>
+         <th>Judul</th>
+         <th>content</th>
+         <th>image</th>
+         <th>Action</th>
+       </tr>
+     </thead>
+     <tbody>
+      <?php foreach ($records as $d) : ?>
+       <tr>
+         <td><?php echo $d['id'] ?></td>
+         <td><?php echo $d['date'] ?></td>
+         <td><?php echo $d['title'] ?></td>
+         <td><?php echo $d['content'] ?></td>
+         <td><?php echo $d['image_file'] ?></td>
+         <td><a href="<?php echo base_url('index.php/Blog/byId/'.$d['id']) ?>">View Details</a>
+      <a class="btn btn-sm btn-success" href="<?php echo base_url('index.php/Blog/update_view/'.$d['id']) ?>">Update  </a>
+            <a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/Blog/delete_action/'.$d['id']) ?>">Delete </a></td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</main>
+<script>
+  $(document).ready(function() {
+    $('#dt-basic').DataTable();
+  } );
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.13/datatables.min.js"></script>
 </body>
 </html>

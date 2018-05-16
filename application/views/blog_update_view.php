@@ -22,6 +22,9 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Category") ?>">Kategori</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url("index.php/Blog/datatble") ?>">Blog DataTable</a>
+          </li>
         </ul>
       </div>
     </nav>

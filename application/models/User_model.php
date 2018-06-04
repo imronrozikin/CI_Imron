@@ -25,7 +25,7 @@ class User_model extends CI_Model {
        $result = $this->db->get('users');
 
        if($result->num_rows() == 1){
-           return $result->row(0)->user_id;
+           return $result->result_array()[0];
        } else {
            return false;
        }

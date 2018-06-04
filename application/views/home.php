@@ -16,7 +16,8 @@
           <li class="nav-item active">
             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          <?php if ($this->session->userdata('level') == '1'): ?>
+          	<li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Blog</a>
           </li>
           <li class="nav-item">
@@ -25,14 +26,13 @@
            <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Blog/datatable") ?>">Blog DataTable</a>
           </li>
+          <?php endif ?>
         </ul>
-         <?php if(!$this->session->userdata('user_loggedin')) : ?>
+         <?php if($this->session->userdata('loggedin')) : ?>
           <div class="btn-group" role="group" aria-label="Data baru">
         <?php echo anchor('User/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
           </div>
-        <?php endif; ?>
-
-        <?php if($this->session->userdata('user_loggedin')) : ?>
+      <?php else: ?>	
           <div class="btn-group" role="group" aria-label="Data baru">
         <?php echo anchor('User/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
           </div>

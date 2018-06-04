@@ -9,11 +9,12 @@ class User extends CI_Controller {
                 
         $this->load->library('form_validation');
         $this->load->model('User_model');
+        $this->load->helper('form');
     }
 
 	public function index()
 	{
-		$this->load->view('header');
+		$this->load->view('home');
 		$this->load->view('users/register');
 		$this->load->view('footer');
 	}
@@ -29,7 +30,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password2', 'Konfirmasi Password','matches[password]');
 
         if($this->form_validation->run() === FALSE){
-            $this->load->view('header');
+            $this->load->view('home');
             $this->load->view('users/register', $data);
             $this->load->view('footer');
         } else {
@@ -52,7 +53,7 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('username', 'Username', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required');
 
-        if($this->form_validation->run() === FALSE){
+        if($this->form_validation->run() == FALSE){
             $this->load->view('header');
             $this->load->view('users/login', $data);
             $this->load->view('footer');
@@ -64,20 +65,19 @@ class User extends CI_Controller {
 
     		// Login user
     		$user_id = $this->User_model->login($username, $password);
-
     		if($user_id){
         	// Buat session
-        	$user_data = array(
-            'user_id' => $user_id,
-            'username' => $username,
-            'logged_in' => true
-        	);
-        	$this->session->set_userdata($user_data);
+            	$user_data = array(
+                'user_id' => $user_id['user_id'],
+                'username' => $username,
+                'level' => $user_id['level'],
+                'logged_in' => true
+            	);
+            	$this->session->set_userdata($user_data);
 
-        	// Set message
-        	$this->session->set_flashdata('user_loggedin', 'You are now logged in');
-
-        	redirect('Blog');
+            	// Set message
+            	$this->session->set_flashdata('user_loggedin', 'You are now logged in');
+                redirect('Page_controller');
     		} else {
         	// Set message
         	$this->session->set_flashdata('login_failed', 'Login is invalid');

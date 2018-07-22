@@ -30,29 +30,30 @@
 
 
   <main role="main" class="container">
-    <a href="<?php echo base_url("index.php/Blog/add_view") ?>" class="btn btn-primary mb-3">Tambah Blog</a>
+    <a href="#" class="btn btn-primary mb-3">Manajemen User</a>
     <table id="dt-basic" class="table table-striped table-bordered">
      <thead>
        <tr>
          <th>ID</th>
-         <th>Tanggal</th>
-         <th>Judul</th>
-         <th>content</th>
-         <th>image</th>
+         <th>Nama</th>
+         <th>Kodepos</th>
+         <th>Email</th>
+         <th>Username</th>
+         <th>Password</th>
          <th>Action</th>
        </tr>
      </thead>
      <tbody>
-      <?php foreach ($records as $d) : ?>
+      <?php foreach ($user->result_array() as $d) : ?>
        <tr>
-         <td><?php echo $d['id'] ?></td>
-         <td><?php echo $d['date'] ?></td>
-         <td><?php echo $d['title'] ?></td>
-         <td><?php echo $d['content'] ?></td>
-         <td><?php echo $d['image_file'] ?></td>
-         <td><a href="<?php echo base_url('index.php/Blog/byId/'.$d['id']) ?>">View Details</a>
-      <a class="btn btn-sm btn-success" href="<?php echo base_url('index.php/Blog/update_view/'.$d['id']) ?>">Update  </a>
-            <a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/Blog/delete_action/'.$d['id']) ?>">Delete </a></td>
+         <td><?php echo $d['user_id'] ?></td>
+         <td><?php echo $d['nama'] ?></td>
+         <td><?php echo $d['kodepos'] ?></td>
+         <td><?php echo $d['email'] ?></td>
+         <td><?php echo $d['username'] ?></td>
+         <td><?php echo $d['password'] ?></td>
+         <td><a class="btn btn-sm btn-success" href="<?php echo base_url('index.php/user/edit/'.$d['user_id']) ?>">Update  </a>
+            <a class="btn btn-sm btn-danger" href="<?php echo base_url('index.php/user/delete/'.$d['user_id']) ?>">Delete </a></td>
         </tr>
       <?php endforeach; ?>
     </tbody>

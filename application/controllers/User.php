@@ -98,4 +98,34 @@ class User extends CI_Controller {
 
         redirect('user/login');
     }
+
+    public function view()
+    {
+        $data['user'] = $this->User_model->get();
+        $this->load->view('view_user',$data);
+    }
+
+    public function edit($id)
+    {
+        $data['user'] = $this->User_model->getByid($id)->result();
+        $this->load->view('edit_user',$data);   
+    }
+
+    public function update($id)
+    {
+        $object = array(
+            'nama' => $this->input->post('nama'),
+            'kodepos' => $this->input->post('kodepos'),
+            'email' => $this->input->post('email'),
+            'username' => $this->input->post('username'),
+            'password' => md5($this->input->post('password'))
+        );
+        $this->User_model->edit($object,$id); 
+        redirect('User/view','refresh');
+    }
+
+    public function delete($id){
+        $this->User_model->delete($id);
+        redirect('User/view','refresh');
+    }
 }

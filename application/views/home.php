@@ -18,13 +18,16 @@
           </li>
           <?php if ($this->session->userdata('level') == '1'): ?>
           	<li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Blog</a>
+            <a class="nav-link" href="<?php echo base_url("index.php/Blog/pagination") ?>">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Category") ?>">Kategori</a>
           </li>
            <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Blog/datatable") ?>">Blog DataTable</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url("index.php/User/view") ?>">User</a>
           </li>
           <?php endif ?>
         </ul>

@@ -31,5 +31,25 @@ class User_model extends CI_Model {
        }
    }
 
+   public function get()
+   {
+        return $this->db->get('users');
+   }
+
+   public function getByid($id){
+      $this->db->where('user_id', $id);
+      return $this->db->get('users');
+   }
+
+   public function edit($object,$id)
+   {
+      $this->db->where('user_id', $id);
+      return $this->db->update('users',$object);  
+   }
+
+   public function delete($id){
+      $this->db->where('user_id', $id);
+      return $this->db->delete('users');  
+   }
 
 }

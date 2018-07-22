@@ -17,7 +17,7 @@
             <a class="nav-link" href="<?php echo base_url() ?>">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url("index.php/Blog") ?>">Blog</a>
+            <a class="nav-link" href="<?php echo base_url("index.php/Blog/pagination") ?>">Blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url("index.php/Category") ?>">Kategori</a>
